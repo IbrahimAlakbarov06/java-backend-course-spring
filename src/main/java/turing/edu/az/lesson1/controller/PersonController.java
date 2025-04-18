@@ -1,5 +1,6 @@
 package turing.edu.az.lesson1.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import turing.edu.az.lesson1.model.Person;
 import turing.edu.az.lesson1.service.PersonService;
@@ -8,9 +9,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v2/person")
+@RequiredArgsConstructor
 public class PersonController {
 
-    PersonService personService;
+    private final PersonService personService;
 
     @GetMapping
     public List<Person> getPersons(){
