@@ -10,7 +10,7 @@ import lombok.NonNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "persons")
+@Table(name = "salam")
 public class Person {
 
 

@@ -39,13 +39,13 @@ public class WebController {
         return "persons/update";
     }
 
-    @PutMapping("/persons/{id}")
-    public String updatePerson(@PathVariable("id") long id, @RequestParam("name") String name) {
-        Person person = personService.getPersonById(id);
-        person.setName(name);
-        personService.updatePerson(person);
-        return "redirect:/persons";
-    }
+//    @PutMapping("/persons/{id}")
+//    public String updatePerson(@PathVariable("id") long id, @RequestParam("name") String name) {
+//        Person person = personService.getPersonById(id);
+//        person.setName(name);
+//        personService.updatePerson(person);
+//        return "redirect:/persons";
+//    }
 
     @GetMapping("/persons/delete/{id}")
     public String deletePerson(@PathVariable("id") long id) {
