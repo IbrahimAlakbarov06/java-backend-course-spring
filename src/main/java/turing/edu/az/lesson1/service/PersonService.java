@@ -15,41 +15,29 @@ public class PersonService {
     private final PersonDao personDao;
 
     public List<Person> getAllPersons() {
-        return personDao.getAllPersons();
+        return personDao.findAll();
     }
 
-    public String createPerson(Person student) {
-        int rowsAffected = personDao.addPerson(student);
-        if (rowsAffected > 0) {
-            return "Person created successfully!";
-        } else {
-            throw new RuntimeException("Failed to create student.");
-        }
+    public void createPerson(Person student) {
+        personDao.save(student);
     }
 
     public String deletePerson(long id) {
-        int rowsAffected = personDao.deletePerson(id);
-        if (rowsAffected > 0) {
-            return "Person deleted successfully!";
-        } else {
-            throw new PersonNotFoundException("Person with id " + id + " not found.");
-        }
+         personDao.deleteById(id);
+         return "Person deleted";
     }
 
-    public String updatePerson(Person student) {
-        int rowsAffected = personDao.updatePerson(student);
-        if (rowsAffected > 0) {
-            return "Person updated successfully!";
-        } else {
-            throw new PersonNotFoundException("Person with id " + student.getId() + " not found.");
-        }
-    }
+//    public String updatePerson(Person student) {
+//        personDao.saveAll(student);
+//        if (rowsAffected > 0) {
+//            return "Person updated successfully!";
+//        } else {
+//            throw new PersonNotFoundException("Person with id " + student.getId() + " not found.");
+//        }
+//    }
 
     public Person getPersonById(long id) {
-        Person student = personDao.getPersonById(id);
-        if (student == null) {
-            throw new PersonNotFoundException("Person with id " + id + " not found.");
-        }
-        return student;
+        return personDao.findById(id)
+                .orElseThrow(() -> new PersonNotFoundException("Person with id " + id + " not found."));
     }
 }

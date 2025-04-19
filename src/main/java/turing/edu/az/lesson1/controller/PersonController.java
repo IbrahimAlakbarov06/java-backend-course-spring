@@ -24,10 +24,10 @@ public class PersonController {
         personService.createPerson(person);
     }
 
-    @PutMapping("/{id}")
-    public void updatePerson(@PathVariable int id, @RequestBody Person person){
-        personService.updatePerson(person);
-    }
+//    @PutMapping("/{id}")
+//    public void updatePerson(@PathVariable int id, @RequestBody Person person){
+//        personService.updatePerson(person);
+//    }
 
     @GetMapping ("/{id}")
     public Person getPerson(@PathVariable int id){
