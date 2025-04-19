@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students List</title>
+  <style>
+    /* General page styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .table th, .table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 1px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 10px;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+    </style>
+</head>
+<body>
+<header>
+  <h1>Students List</h1>
+</header>
+
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${persons}">
+      <td th:text="${person.id}"></td>
+      <td th:text="${person.name}"></td>
+      <td>
+        <a th:href="@{/persons/update/{id}(id=${person.id})}" class="button">Edit</a>
+        <a th:href="@{/persons/delete/{id}(id=${person.id})}" class="button">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <a href="/persons/create" class="button">Add New Student</a>
+</div>
+
+<script >
+  document.addEventListener("DOMContentLoaded", function() {
+    console.log("Page Loaded!");
+  });
+</script>
+</body>
+</html>

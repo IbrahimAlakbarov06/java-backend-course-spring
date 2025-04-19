@@ -8,7 +8,7 @@ import turing.edu.az.lesson1.service.PersonService;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v2/person")
+@RequestMapping("api/v2/persons")
 @RequiredArgsConstructor
 public class PersonController {
 
